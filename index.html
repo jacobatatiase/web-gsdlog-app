@@ -1,1 +1,368 @@
-this is gsdlog.app
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSDlog - The Ultimate German Shepherd Companion App</title>
+    <meta name="description" content="A modern app tailored for German Shepherd Dog owners. Track walks, health, training, and get amazing insights about your GSD.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d1810;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 25%, #d4af8c 50%, #c19a6b 75%, #a67c52 100%);
+            overflow: hidden;
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 140, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(193, 154, 107, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(244, 232, 208, 0.4) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(166, 124, 82, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(212, 175, 140, 0.1) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: drift 30s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(40px); }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(45, 24, 16, 0.2), 0 8px 25px rgba(45, 24, 16, 0.15);
+            margin: 0 auto 40px;
+            display: block;
+            transform: translateY(0);
+            animation: iconFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #8b4513, #a0522d, #cd853f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #5d3a1a;
+            font-weight: 500;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: #6b4226;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #8b4513;
+            border: 2px solid rgba(139, 69, 19, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(139, 69, 19, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 60px 0;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #8b4513;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #8b4513;
+        }
+
+        .feature-card p {
+            color: #6b4226;
+            line-height: 1.6;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .screenshots h2 {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #8b4513;
+        }
+
+        .screenshot-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .screenshot {
+            width: 250px;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(244, 232, 208, 0.8));
+            border-radius: 24px;
+            border: 8px solid #8b4513;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b4513;
+            font-size: 1.1rem;
+            font-weight: 500;
+            box-shadow: 0 20px 40px rgba(45, 24, 16, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            text-align: center;
+            color: #6b4226;
+        }
+
+        .footer p {
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 280px;
+            }
+
+            .screenshot-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <img src="icons/ios/AppIcon.appiconset/ItunesArtwork@2x.png" alt="GSDlog App Icon" class="app-icon">
+                <h1>GSDlog</h1>
+                <p class="tagline">The Ultimate German Shepherd Companion App</p>
+                <p class="description">
+                    A modern app tailored specifically for German Shepherd Dog owners. 
+                    Track walks, monitor health, manage training, and discover amazing insights about your loyal companion.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Coming Soon</a>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2>Built for GSD Excellence</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🐕</div>
+                        <h3>Breed-Specific Tracking</h3>
+                        <p>Specialized features designed for German Shepherd characteristics, needs, and behaviors.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Advanced Insights</h3>
+                        <p>Get detailed analytics and insights about your GSD's patterns, health, and development.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Training Management</h3>
+                        <p>Track training sessions, progress, and achievements with GSD-focused methodologies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="screenshots">
+            <h2>App Preview</h2>
+            <div class="screenshot-gallery">
+                <div class="screenshot">
+                    Screenshot 1<br>Coming Soon
+                </div>
+                <div class="screenshot">
+                    Screenshot 2<br>Coming Soon
+                </div>
+                <div class="screenshot">
+                    Screenshot 3<br>Coming Soon
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>GSDlog</strong> - Dedicated to German Shepherd Dog owners everywhere</p>
+            <p>More details coming soon. Stay tuned for updates!</p>
+            <p>&copy; 2024 GSDlog. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
