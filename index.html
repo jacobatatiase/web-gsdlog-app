@@ -6,10 +6,6 @@
     <title>GSDlog - The Ultimate German Shepherd Companion App</title>
     <meta name="description" content="A modern app tailored for German Shepherd Dog owners. Track walks, health, training, and get amazing insights about your GSD.">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -36,7 +32,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--primary-bg);
@@ -58,16 +54,6 @@
         }
 
 
-        /* Particle System Canvas */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.6;
-        }
 
         @keyframes float {
             0%, 100% { 
@@ -81,10 +67,6 @@
             }
         }
 
-        /* Typography */
-        .display-font {
-            font-family: 'Playfair Display', serif;
-        }
 
         /* Container */
         .container {
@@ -130,7 +112,6 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             display: block;
             transform: translateY(0) rotateX(0) rotateY(0);
-            animation: iconFloat 6s ease-in-out infinite;
             transition: all 0.3s ease;
             border: 2px solid rgba(85, 85, 85, 0.3);
         }
@@ -143,22 +124,16 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px) rotateZ(0deg); }
-            25% { transform: translateY(-8px) rotateZ(1deg); }
-            50% { transform: translateY(-12px) rotateZ(0deg); }
-            75% { transform: translateY(-6px) rotateZ(-1deg); }
-        }
 
         .hero h1 {
             font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-gold), var(--text-secondary));
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary), #aaaaaa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-family: 'Playfair Display', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             letter-spacing: -0.02em;
             position: relative;
         }
@@ -174,7 +149,7 @@
         }
 
         .typewriter-text {
-            border-right: 2px solid var(--accent-gold);
+            border-right: 2px solid var(--accent-secondary);
             animation: typewriter 3s steps(40) 2s forwards, blink 1s infinite 5s;
             white-space: nowrap;
             overflow: hidden;
@@ -314,7 +289,7 @@
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 80px;
             color: var(--text-secondary);
-            font-family: 'Playfair Display', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             letter-spacing: -0.02em;
         }
@@ -419,7 +394,7 @@
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 80px;
             color: var(--text-secondary);
-            font-family: 'Playfair Display', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             letter-spacing: -0.02em;
         }
@@ -642,8 +617,6 @@
     <!-- Background -->
     <div class="background"></div>
     
-    <!-- Particle System -->
-    <canvas id="particles-canvas"></canvas>
     
     <!-- GSD Decorative Elements -->
     <div class="gsd-silhouette gsd-silhouette-1">
@@ -664,7 +637,7 @@
                 <div class="app-icon-container">
                     <img src="icons/ios/AppIcon.appiconset/ItunesArtwork@2x.png" alt="GSDlog App Icon" class="app-icon">
                 </div>
-                <h1 class="display-font">GSDlog</h1>
+                <h1>GSDlog</h1>
                 <p class="tagline">
                     <span class="typewriter-text">The Ultimate German Shepherd Companion App</span>
                 </p>
@@ -675,7 +648,7 @@
                 <div class="cta-buttons">
                     <a href="#" class="btn btn-primary">
                         <span>Coming Soon</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                             <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
                         </svg>
                     </a>
@@ -689,7 +662,7 @@
         <!-- Features Section -->
         <section id="features" class="features fade-in">
             <div class="features-content">
-                <h2 class="display-font">Built for GSD Excellence</h2>
+                <h2>Built for GSD Excellence</h2>
                 <div class="features-grid">
                     <div class="feature-card fade-in">
                         <div class="feature-icon">
@@ -724,7 +697,7 @@
 
         <!-- Screenshots Section -->
         <section class="screenshots fade-in">
-            <h2 class="display-font">App Preview</h2>
+            <h2>App Preview</h2>
             <div class="screenshot-gallery">
                 <div class="phone-mockup fade-in">
                     <div class="phone-frame">
@@ -768,109 +741,6 @@
     </div>
 
     <script>
-        // Particle System
-        class ParticleSystem {
-            constructor() {
-                this.canvas = document.getElementById('particles-canvas');
-                this.ctx = this.canvas.getContext('2d');
-                this.particles = [];
-                this.mouseX = 0;
-                this.mouseY = 0;
-                this.init();
-                this.animate();
-                this.setupEventListeners();
-            }
-
-            init() {
-                this.resize();
-                this.createParticles();
-            }
-
-            resize() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-            }
-
-            createParticles() {
-                const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
-                for (let i = 0; i < particleCount; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        size: Math.random() * 3 + 1,
-                        speedX: (Math.random() - 0.5) * 0.5,
-                        speedY: (Math.random() - 0.5) * 0.5,
-                        opacity: Math.random() * 0.5 + 0.2,
-                        color: `hsla(0, 0%, ${60 + Math.random() * 30}%, ${Math.random() * 0.3 + 0.1})`
-                    });
-                }
-            }
-
-            animate() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                this.particles.forEach((particle, index) => {
-                    // Mouse interaction
-                    const dx = this.mouseX - particle.x;
-                    const dy = this.mouseY - particle.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 100) {
-                        const force = (100 - distance) / 100;
-                        particle.x -= (dx / distance) * force * 0.5;
-                        particle.y -= (dy / distance) * force * 0.5;
-                    }
-                    
-                    // Update position
-                    particle.x += particle.speedX;
-                    particle.y += particle.speedY;
-                    
-                    // Boundary bounce
-                    if (particle.x < 0 || particle.x > this.canvas.width) {
-                        particle.speedX *= -1;
-                    }
-                    if (particle.y < 0 || particle.y > this.canvas.height) {
-                        particle.speedY *= -1;
-                    }
-                    
-                    // Draw particle
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    this.ctx.fillStyle = particle.color;
-                    this.ctx.fill();
-                    
-                    // Connect nearby particles
-                    this.particles.slice(index + 1).forEach(otherParticle => {
-                        const dx = particle.x - otherParticle.x;
-                        const dy = particle.y - otherParticle.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < 100) {
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(particle.x, particle.y);
-                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = `rgba(85, 85, 85, ${0.3 * (1 - distance / 100)})`;
-                            this.ctx.stroke();
-                        }
-                    });
-                });
-                
-                requestAnimationFrame(() => this.animate());
-            }
-
-            setupEventListeners() {
-                window.addEventListener('mousemove', (e) => {
-                    this.mouseX = e.clientX;
-                    this.mouseY = e.clientY;
-                });
-                
-                window.addEventListener('resize', () => {
-                    this.resize();
-                    this.particles = [];
-                    this.createParticles();
-                });
-            }
-        }
 
 
         // Scroll Animations
@@ -898,7 +768,6 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            new ParticleSystem();
             new ScrollAnimations();
 
             // Smooth scrolling for anchor links
