@@ -13,16 +13,16 @@
     
     <style>
         :root {
-            --primary-bg: #0a0806;
-            --secondary-bg: #1a0f0a;
-            --tertiary-bg: #2d1810;
-            --accent-warm: #8b4513;
-            --accent-gold: #cd853f;
-            --text-primary: #f4e8d0;
-            --text-secondary: #deb887;
-            --text-muted: #c4a484;
-            --glass-bg: rgba(45, 24, 16, 0.15);
-            --glass-border: rgba(139, 69, 19, 0.2);
+            --primary-bg: #000000;
+            --secondary-bg: #111111;
+            --tertiary-bg: #1a1a1a;
+            --accent-primary: #333333;
+            --accent-secondary: #555555;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            --glass-bg: rgba(26, 26, 26, 0.15);
+            --glass-border: rgba(85, 85, 85, 0.2);
         }
 
         * {
@@ -41,32 +41,9 @@
             color: var(--text-primary);
             background: var(--primary-bg);
             overflow-x: hidden;
-            cursor: none;
+            cursor: default;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--accent-gold), var(--accent-warm));
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            opacity: 0;
-        }
-
-        .cursor-trail {
-            position: fixed;
-            width: 6px;
-            height: 6px;
-            background: var(--accent-gold);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0;
-        }
 
         /* Advanced Animated Background */
         .background {
@@ -76,44 +53,10 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
-            background: radial-gradient(ellipse at top, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
             overflow: hidden;
         }
 
-        .bg-gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .bg-gradient-orb:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--accent-warm), transparent);
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .bg-gradient-orb:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--accent-gold), transparent);
-            top: 60%;
-            right: 10%;
-            animation-delay: -7s;
-        }
-
-        .bg-gradient-orb:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, #d2691e, transparent);
-            bottom: 10%;
-            left: 30%;
-            animation-delay: -14s;
-        }
 
         /* Particle System Canvas */
         #particles-canvas {
@@ -183,20 +126,20 @@
             border-radius: 32px;
             box-shadow: 
                 0 25px 80px rgba(0, 0, 0, 0.4),
-                0 10px 30px rgba(160, 82, 45, 0.3),
+                0 10px 30px rgba(85, 85, 85, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             display: block;
             transform: translateY(0) rotateX(0) rotateY(0);
             animation: iconFloat 6s ease-in-out infinite;
             transition: all 0.3s ease;
-            border: 2px solid rgba(205, 133, 63, 0.3);
+            border: 2px solid rgba(85, 85, 85, 0.3);
         }
 
         .app-icon:hover {
             transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.05);
             box-shadow: 
                 0 35px 100px rgba(0, 0, 0, 0.5),
-                0 15px 40px rgba(160, 82, 45, 0.4),
+                0 15px 40px rgba(85, 85, 85, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
@@ -320,7 +263,7 @@
         }
 
         .btn-secondary {
-            background: rgba(45, 24, 16, 0.4);
+            background: rgba(26, 26, 26, 0.4);
             color: var(--text-secondary);
             border: 2px solid rgba(222, 184, 135, 0.3);
             backdrop-filter: blur(20px);
@@ -330,7 +273,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(45, 24, 16, 0.7);
+            background: rgba(26, 26, 26, 0.7);
             border-color: rgba(222, 184, 135, 0.6);
             transform: translateY(-4px) scale(1.02);
             box-shadow: 
@@ -414,9 +357,9 @@
             transform: translateY(-8px) scale(1.02);
             box-shadow: 
                 0 20px 50px rgba(0, 0, 0, 0.3),
-                0 10px 25px rgba(139, 69, 19, 0.2),
+                0 10px 25px rgba(85, 85, 85, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: rgba(205, 133, 63, 0.3);
+            border-color: rgba(85, 85, 85, 0.3);
         }
 
         .feature-card:hover::before {
@@ -427,13 +370,13 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 30px;
-            background: linear-gradient(135deg, var(--accent-warm), var(--accent-gold));
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 
-                0 10px 30px rgba(139, 69, 19, 0.3),
+                0 10px 30px rgba(51, 51, 51, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
@@ -441,7 +384,7 @@
         .feature-card:hover .feature-icon {
             transform: scale(1.1) rotateY(10deg);
             box-shadow: 
-                0 15px 40px rgba(139, 69, 19, 0.4),
+                0 15px 40px rgba(51, 51, 51, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
@@ -519,7 +462,7 @@
                 0 25px 80px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1),
                 0 0 0 8px #1a1a1a,
-                0 0 0 9px rgba(139, 69, 19, 0.3);
+                0 0 0 9px rgba(85, 85, 85, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -547,8 +490,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 20%, rgba(139, 69, 19, 0.1), transparent),
-                radial-gradient(circle at 70% 80%, rgba(205, 133, 63, 0.1), transparent);
+                radial-gradient(circle at 30% 20%, rgba(51, 51, 51, 0.1), transparent),
+                radial-gradient(circle at 70% 80%, rgba(85, 85, 85, 0.1), transparent);
         }
 
         .notch {
@@ -591,7 +534,7 @@
             padding: 80px 0;
             text-align: center;
             color: var(--text-muted);
-            border-top: 1px solid rgba(139, 69, 19, 0.1);
+            border-top: 1px solid rgba(85, 85, 85, 0.1);
         }
 
         .footer p {
@@ -628,14 +571,6 @@
 
         /* Mobile Optimizations */
         @media (max-width: 768px) {
-            body {
-                cursor: auto;
-            }
-            
-            .cursor,
-            .cursor-trail {
-                display: none;
-            }
 
             .hero {
                 padding: 40px 0;
@@ -703,15 +638,9 @@
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
     
     <!-- Background -->
-    <div class="background">
-        <div class="bg-gradient-orb"></div>
-        <div class="bg-gradient-orb"></div>
-        <div class="bg-gradient-orb"></div>
-    </div>
+    <div class="background"></div>
     
     <!-- Particle System -->
     <canvas id="particles-canvas"></canvas>
@@ -872,7 +801,7 @@
                         speedX: (Math.random() - 0.5) * 0.5,
                         speedY: (Math.random() - 0.5) * 0.5,
                         opacity: Math.random() * 0.5 + 0.2,
-                        color: `hsla(${30 + Math.random() * 30}, 70%, 60%, ${Math.random() * 0.3 + 0.1})`
+                        color: `hsla(0, 0%, ${60 + Math.random() * 30}%, ${Math.random() * 0.3 + 0.1})`
                     });
                 }
             }
@@ -920,7 +849,7 @@
                             this.ctx.beginPath();
                             this.ctx.moveTo(particle.x, particle.y);
                             this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = `rgba(205, 133, 63, ${0.1 * (1 - distance / 100)})`;
+                            this.ctx.strokeStyle = `rgba(85, 85, 85, ${0.3 * (1 - distance / 100)})`;
                             this.ctx.stroke();
                         }
                     });
@@ -943,71 +872,6 @@
             }
         }
 
-        // Custom Cursor
-        class CustomCursor {
-            constructor() {
-                this.cursor = document.querySelector('.cursor');
-                this.trails = [];
-                this.init();
-            }
-
-            init() {
-                // Create cursor trails
-                for (let i = 0; i < 5; i++) {
-                    const trail = document.createElement('div');
-                    trail.className = 'cursor-trail';
-                    document.body.appendChild(trail);
-                    this.trails.push({
-                        element: trail,
-                        x: 0,
-                        y: 0
-                    });
-                }
-
-                this.bindEvents();
-            }
-
-            bindEvents() {
-                let mouseX = 0;
-                let mouseY = 0;
-
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    
-                    this.cursor.style.opacity = '1';
-                    this.cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
-                });
-
-                document.addEventListener('mouseleave', () => {
-                    this.cursor.style.opacity = '0';
-                    this.trails.forEach(trail => {
-                        trail.element.style.opacity = '0';
-                    });
-                });
-
-                // Animate trails
-                const animateTrails = () => {
-                    let currentX = mouseX;
-                    let currentY = mouseY;
-
-                    this.trails.forEach((trail, index) => {
-                        trail.x += (currentX - trail.x) * (0.3 - index * 0.05);
-                        trail.y += (currentY - trail.y) * (0.3 - index * 0.05);
-                        
-                        trail.element.style.opacity = this.cursor.style.opacity === '1' ? (0.5 - index * 0.1) : '0';
-                        trail.element.style.transform = `translate(${trail.x - 3}px, ${trail.y - 3}px)`;
-                        
-                        currentX = trail.x;
-                        currentY = trail.y;
-                    });
-
-                    requestAnimationFrame(animateTrails);
-                };
-
-                animateTrails();
-            }
-        }
 
         // Scroll Animations
         class ScrollAnimations {
@@ -1031,38 +895,9 @@
             }
         }
 
-        // Background Gradient Following Mouse
-        class InteractiveBackground {
-            constructor() {
-                this.background = document.querySelector('.background');
-                this.orbs = document.querySelectorAll('.bg-gradient-orb');
-                this.init();
-            }
-
-            init() {
-                document.addEventListener('mousemove', (e) => {
-                    const x = (e.clientX / window.innerWidth) * 100;
-                    const y = (e.clientY / window.innerHeight) * 100;
-                    
-                    this.orbs.forEach((orb, index) => {
-                        const speed = 0.02 + index * 0.01;
-                        const newX = x * speed;
-                        const newY = y * speed;
-                        
-                        orb.style.transform = `translate(${newX}px, ${newY}px)`;
-                    });
-                });
-            }
-        }
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Only initialize interactive features on non-mobile devices
-            if (window.innerWidth > 768) {
-                new CustomCursor();
-                new InteractiveBackground();
-            }
-            
             new ParticleSystem();
             new ScrollAnimations();
 
