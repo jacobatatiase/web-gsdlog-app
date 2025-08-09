@@ -71,34 +71,32 @@
         /* Navigation */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-120px);
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(85, 85, 85, 0.2);
+            border: 1px solid rgba(85, 85, 85, 0.2);
+            border-radius: 50px;
             padding: 0;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .navbar.visible {
-            transform: translateY(0);
-        }
-        
-        .navbar.hero-visible {
-            background: rgba(0, 0, 0, 0.7);
+            transform: translateX(-50%) translateY(0);
         }
         
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 70px;
+            height: 60px;
+            padding: 0 25px;
+            min-width: 600px;
         }
         
         .nav-logo {
@@ -174,24 +172,52 @@
         
         /* Mobile Navigation */
         @media (max-width: 768px) {
+            .navbar {
+                top: 15px;
+                left: 20px;
+                right: 20px;
+                transform: translateY(-120px);
+                border-radius: 25px;
+            }
+            
+            .navbar.visible {
+                transform: translateY(0);
+            }
+            
+            .nav-container {
+                min-width: auto;
+                width: 100%;
+                padding: 0 20px;
+                height: 55px;
+            }
+            
             .nav-menu {
                 position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
+                top: 85px;
+                left: 20px;
+                right: 20px;
                 background: rgba(0, 0, 0, 0.95);
                 backdrop-filter: blur(20px);
+                border: 1px solid rgba(85, 85, 85, 0.2);
+                border-radius: 25px;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 2rem;
+                padding: 2rem 0;
                 gap: 1.5rem;
-                transition: left 0.3s ease;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 
+                    0 10px 30px rgba(0, 0, 0, 0.3),
+                    0 5px 15px rgba(0, 0, 0, 0.2);
             }
             
             .nav-menu.active {
-                left: 0;
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
             
             .nav-menu a {
@@ -731,60 +757,140 @@
             color: var(--text-muted);
         }
         
-        /* Pricing Section */
-        .pricing {
+        /* Beta Section */
+        .beta {
             padding: 120px 0;
             text-align: center;
         }
         
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+        .beta-content {
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        .pricing-card {
+        .beta-hero {
+            margin-bottom: 80px;
+        }
+        
+        .beta-hero h3 {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .beta-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .beta-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .beta-card {
             background: rgba(26, 26, 26, 0.8);
             border: 1px solid rgba(85, 85, 85, 0.3);
             border-radius: 24px;
             padding: 40px 30px;
-            position: relative;
             transition: all 0.3s ease;
         }
         
-        .pricing-card.featured {
-            border-color: var(--accent-secondary);
-            transform: scale(1.05);
+        .beta-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(85, 85, 85, 0.5);
         }
         
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-        }
-        
-        .price {
+        .beta-icon {
             font-size: 3rem;
-            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .beta-card h4 {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .beta-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .testflight-info {
+            background: rgba(26, 26, 26, 0.3);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin-bottom: 80px;
+            border: 1px solid rgba(85, 85, 85, 0.2);
+        }
+        
+        .testflight-info h3 {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+        }
+        
+        .testflight-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: var(--text-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .step-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .beta-cta {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 24px;
+            padding: 50px 40px;
+            border: 1px solid rgba(85, 85, 85, 0.2);
+        }
+        
+        .beta-cta h3 {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .beta-cta p {
+            color: var(--text-muted);
             margin-bottom: 30px;
-        }
-        
-        .price span {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-        
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 30px 0;
-        }
-        
-        .pricing-card li {
-            padding: 8px 0;
-            color: var(--text-muted);
+            font-size: 1.1rem;
         }
         
         /* Support Section */
@@ -991,13 +1097,25 @@
                 padding: 20px;
             }
             
-            .pricing-grid {
+            .beta-features {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
             
-            .pricing-card.featured {
-                transform: none;
+            .testflight-steps {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .step {
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testflight-info,
+            .beta-cta {
+                padding: 40px 20px;
             }
             
             .signup-form {
@@ -1058,7 +1176,7 @@
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#beta" class="nav-link">Beta</a></li>
                 <li><a href="#support" class="nav-link">Support</a></li>
                 <li><a href="#download" class="nav-link">Download</a></li>
             </ul>
@@ -1186,45 +1304,65 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="pricing fade-in">
+        <!-- Beta Section -->
+        <section id="beta" class="beta fade-in">
             <div class="features-content">
-                <h2>Simple Pricing</h2>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>Basic</h3>
-                        <div class="price">Free</div>
-                        <ul>
-                            <li>Basic health tracking</li>
-                            <li>Walk logging</li>
-                            <li>Photo storage</li>
-                            <li>Community access</li>
-                        </ul>
-                        <a href="#" class="btn btn-secondary">Get Started</a>
+                <h2>Join the Beta</h2>
+                <div class="beta-content">
+                    <div class="beta-hero">
+                        <h3>Be Among the First</h3>
+                        <p>GSDlog is launching first on Apple's TestFlight beta program. This gives us the opportunity to work directly with dedicated GSD owners like you to perfect the app before our official App Store launch.</p>
                     </div>
-                    <div class="pricing-card featured">
-                        <h3>Pro</h3>
-                        <div class="price">$4.99<span>/month</span></div>
-                        <ul>
-                            <li>Advanced analytics</li>
-                            <li>Training programs</li>
-                            <li>Health insights</li>
-                            <li>Vet integration</li>
-                            <li>Priority support</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Coming Soon</a>
+                    
+                    <div class="beta-features">
+                        <div class="beta-card">
+                            <div class="beta-icon">🧪</div>
+                            <h4>Early Access</h4>
+                            <p>Get access to new features weeks before they're available to the public</p>
+                        </div>
+                        <div class="beta-card">
+                            <div class="beta-icon">🤝</div>
+                            <h4>Direct Feedback</h4>
+                            <p>Your input directly shapes the development and improvement of GSDlog</p>
+                        </div>
+                        <div class="beta-card">
+                            <div class="beta-icon">🎯</div>
+                            <h4>GSD-Focused Testing</h4>
+                            <p>Help us ensure every feature works perfectly for German Shepherd owners</p>
+                        </div>
                     </div>
-                    <div class="pricing-card">
-                        <h3>Breeder</h3>
-                        <div class="price">$14.99<span>/month</span></div>
-                        <ul>
-                            <li>Multi-dog management</li>
-                            <li>Breeding tracking</li>
-                            <li>Lineage records</li>
-                            <li>Advanced reporting</li>
-                            <li>API access</li>
-                        </ul>
-                        <a href="#" class="btn btn-secondary">Coming Soon</a>
+                    
+                    <div class="testflight-info">
+                        <h3>How TestFlight Beta Works</h3>
+                        <div class="testflight-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Sign Up</h4>
+                                    <p>Join our beta waitlist with your email address</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Get Invited</h4>
+                                    <p>Receive your TestFlight invitation via email</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Start Testing</h4>
+                                    <p>Download GSDlog and begin tracking your GSD's journey</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="beta-cta">
+                        <h3>Ready to Join?</h3>
+                        <p>Beta spots are limited. Sign up now to secure your place in the GSDlog TestFlight beta.</p>
+                        <a href="#download" class="btn btn-primary">Join Beta Waitlist</a>
                     </div>
                 </div>
             </div>
@@ -1274,8 +1412,8 @@
                         </div>
                         <div class="store-button">
                             <div class="store-placeholder">
-                                <span>Coming Soon</span>
-                                <strong>TestFlight Beta</strong>
+                                <span>Beta Testing</span>
+                                <strong>TestFlight</strong>
                             </div>
                         </div>
                     </div>
