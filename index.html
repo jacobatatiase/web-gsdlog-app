@@ -1391,7 +1391,7 @@
                 </div>
                 <div class="support-contact">
                     <h3>Still have questions?</h3>
-                    <p>Reach out to our team at <a href="mailto:hello@gsdlog.app">hello@gsdlog.app</a></p>
+                    <p>Reach out to our team at <span class="email-address" data-user="vasb" data-domain="tfrqybt.ncc"></span></p>
                 </div>
             </div>
         </section>
@@ -1421,9 +1421,9 @@
                         <p>Interested in GSDlog? Send us an email and we'll keep you updated on our progress and beta opportunities.</p>
                         <div class="contact-info">
                             <p class="email-contact">
-                                Email us at: <span class="email-address" data-user="info" data-domain="gsdlog.app"></span>
+                                Email us at: <span class="email-address" data-user="vasb" data-domain="tfrqybt.ncc"></span>
                             </p>
-                            <a href="#" class="btn btn-primary email-link" data-user="info" data-domain="gsdlog.app">Send Email</a>
+                            <a href="#" class="btn btn-primary email-link" data-user="vasb" data-domain="tfrqybt.ncc">Send Email</a>
                         </div>
                     </div>
                 </div>
@@ -1597,26 +1597,75 @@
             initializeEmailProtection();
         });
 
-        // Email protection functionality
+        // Enhanced email protection functionality
         function initializeEmailProtection() {
-            // Display email addresses
+            // Simple ROT13-like obfuscation function
+            function deobfuscate(str) {
+                return str.split('').map(char => {
+                    const code = char.charCodeAt(0);
+                    if (code >= 97 && code <= 122) {
+                        return String.fromCharCode(((code - 97 + 13) % 26) + 97);
+                    }
+                    if (code >= 65 && code <= 90) {
+                        return String.fromCharCode(((code - 65 + 13) % 26) + 65);
+                    }
+                    return char;
+                }).join('');
+            }
+            
+            // Construct email from parts
+            function buildEmail(user, domain) {
+                const parts = [user, String.fromCharCode(64), domain];
+                return parts.join('');
+            }
+            
+            // Display email addresses and make them clickable
             document.querySelectorAll('.email-address').forEach(element => {
-                const user = element.getAttribute('data-user');
-                const domain = element.getAttribute('data-domain');
-                if (user && domain) {
-                    element.textContent = user + String.fromCharCode(64) + domain;
-                    element.addEventListener('click', () => {
-                        window.location.href = 'mailto:' + user + String.fromCharCode(64) + domain;
+                const obfuscatedUser = element.getAttribute('data-user');
+                const obfuscatedDomain = element.getAttribute('data-domain');
+                if (obfuscatedUser && obfuscatedDomain) {
+                    const user = deobfuscate(obfuscatedUser);
+                    const domain = deobfuscate(obfuscatedDomain);
+                    const email = buildEmail(user, domain);
+                    element.textContent = email;
+                    element.style.cursor = 'pointer';
+                    
+                    // Remove any existing event listeners and add new one
+                    const newElement = element.cloneNode(true);
+                    element.parentNode.replaceChild(newElement, element);
+                    
+                    newElement.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const mailtoUrl = 'mailto:' + email;
+                        window.location.href = mailtoUrl;
                     });
                 }
             });
 
-            // Set up email links
+            // Set up email links (buttons)
             document.querySelectorAll('.email-link').forEach(link => {
-                const user = link.getAttribute('data-user');
-                const domain = link.getAttribute('data-domain');
-                if (user && domain) {
-                    link.href = 'mailto:' + user + String.fromCharCode(64) + domain;
+                const obfuscatedUser = link.getAttribute('data-user');
+                const obfuscatedDomain = link.getAttribute('data-domain');
+                if (obfuscatedUser && obfuscatedDomain) {
+                    const user = deobfuscate(obfuscatedUser);
+                    const domain = deobfuscate(obfuscatedDomain);
+                    const email = buildEmail(user, domain);
+                    
+                    // Remove href="#" and add proper click handler
+                    link.removeAttribute('href');
+                    link.style.cursor = 'pointer';
+                    
+                    // Remove any existing event listeners and add new one
+                    const newLink = link.cloneNode(true);
+                    link.parentNode.replaceChild(newLink, link);
+                    
+                    newLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const mailtoUrl = 'mailto:' + email + '?subject=GSDlog%20Inquiry';
+                        window.location.href = mailtoUrl;
+                    });
                 }
             });
         }
