@@ -1026,30 +1026,29 @@
             margin-bottom: 30px;
         }
         
-        .signup-form {
+        .contact-info {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
         
-        .email-input {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(85, 85, 85, 0.3);
-            border-radius: 50px;
-            padding: 18px 24px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            min-width: 300px;
-            outline: none;
-        }
-        
-        .email-input:focus {
-            border-color: var(--accent-secondary);
-        }
-        
-        .email-input::placeholder {
+        .email-contact {
+            font-size: 1.1rem;
             color: var(--text-muted);
+            margin: 0;
+        }
+        
+        .email-address {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .email-address:hover {
+            color: var(--text-primary);
         }
         
         /* Mobile Optimizations */
@@ -1119,13 +1118,13 @@
                 padding: 40px 20px;
             }
             
-            .signup-form {
-                flex-direction: column;
-                align-items: center;
+            .contact-info {
+                gap: 15px;
             }
             
-            .email-input {
-                min-width: 280px;
+            .email-contact {
+                font-size: 1rem;
+                text-align: center;
             }
             
             .download-buttons {
@@ -1418,11 +1417,13 @@
                         </div>
                     </div>
                     <div class="waitlist-signup">
-                        <h3>Join the Waitlist</h3>
-                        <p>Be the first to experience the ultimate GSD companion app.</p>
-                        <div class="signup-form">
-                            <input type="email" placeholder="Enter your email address" class="email-input">
-                            <button class="btn btn-primary">Notify Me</button>
+                        <h3>Get More Information</h3>
+                        <p>Interested in GSDlog? Send us an email and we'll keep you updated on our progress and beta opportunities.</p>
+                        <div class="contact-info">
+                            <p class="email-contact">
+                                Email us at: <span class="email-address" data-user="info" data-domain="gsdlog.app"></span>
+                            </p>
+                            <a href="#" class="btn btn-primary email-link" data-user="info" data-domain="gsdlog.app">Send Email</a>
                         </div>
                     </div>
                 </div>
@@ -1591,7 +1592,34 @@
                     }
                 });
             });
+
+            // Initialize email protection
+            initializeEmailProtection();
         });
+
+        // Email protection functionality
+        function initializeEmailProtection() {
+            // Display email addresses
+            document.querySelectorAll('.email-address').forEach(element => {
+                const user = element.getAttribute('data-user');
+                const domain = element.getAttribute('data-domain');
+                if (user && domain) {
+                    element.textContent = user + String.fromCharCode(64) + domain;
+                    element.addEventListener('click', () => {
+                        window.location.href = 'mailto:' + user + String.fromCharCode(64) + domain;
+                    });
+                }
+            });
+
+            // Set up email links
+            document.querySelectorAll('.email-link').forEach(link => {
+                const user = link.getAttribute('data-user');
+                const domain = link.getAttribute('data-domain');
+                if (user && domain) {
+                    link.href = 'mailto:' + user + String.fromCharCode(64) + domain;
+                }
+            });
+        }
 
         // Performance optimization: Pause animations when tab is not visible
         document.addEventListener('visibilitychange', () => {
