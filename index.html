@@ -922,6 +922,17 @@
             color: var(--text-secondary);
         }
 
+        .footer-link {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+            text-decoration: underline;
+        }
+
         /* Scroll Animations */
         @keyframes fadeInUp {
             from {
@@ -1516,9 +1527,6 @@
                             <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
                         </svg>
                     </a>
-                    <a href="#" class="btn btn-secondary mastodon-link">
-                        <span>Follow the devlog on Mastodon</span>
-                    </a>
                 </div>
                 <div class="feature-strip">
                     <div class="feature-strip-content">
@@ -1839,6 +1847,7 @@
         <footer class="footer">
             <p><strong>GSDlog</strong> - Dedicated to German Shepherd Dog owners everywhere</p>
             <p>More details coming soon. Stay tuned for updates!</p>
+            <p><a href="#" class="mastodon-link footer-link">Follow the devlog on Mastodon</a></p>
             <p>&copy; 2025 GSDlog. All rights reserved.</p>
         </footer>
     </div>
