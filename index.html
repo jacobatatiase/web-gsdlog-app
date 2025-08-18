@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSDlog - The Ultimate German Shepherd Companion App</title>
+    <title>GSDlog — Your German Shepherd's digital companion</title>
     <meta name="description" content="A modern app tailored for German Shepherd Dog owners. Track walks, health, training, and get amazing insights about your GSD.">
     
     
@@ -369,13 +369,34 @@
             animation: fadeInUp 1s ease 1.5s forwards;
         }
 
+        /* Feature Strip */
+        .feature-strip {
+            margin-top: 60px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 2.5s forwards;
+        }
+
+        .feature-strip-content {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        .feature-strip-content span {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
         /* Enhanced Buttons */
         .cta-buttons {
             display: flex;
             gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
             opacity: 0;
             animation: fadeInUp 1s ease 2s forwards;
         }
@@ -588,6 +609,201 @@
             color: var(--text-muted);
             line-height: 1.6;
             font-size: 1rem;
+        }
+
+        /* Vision Section */
+        .vision {
+            padding: 120px 0;
+            position: relative;
+            margin: 80px 0;
+        }
+
+        .vision-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .vision-content h2 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 80px;
+            color: var(--text-secondary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .vision-card {
+            background: rgba(26, 26, 26, 0.4);
+            border: 1px solid rgba(85, 85, 85, 0.2);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .vision-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(85, 85, 85, 0.4);
+            background: rgba(26, 26, 26, 0.6);
+        }
+
+        .vision-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .vision-card h3 {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .vision-card h4 {
+            color: var(--accent-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .vision-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .privacy-promise {
+            background: rgba(26, 26, 26, 0.3);
+            border: 1px solid rgba(85, 85, 85, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .privacy-promise p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .privacy-promise strong {
+            color: var(--text-secondary);
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            padding: 120px 0;
+            position: relative;
+            margin: 80px 0;
+            background: rgba(26, 26, 26, 0.1);
+            border-radius: 32px;
+            border: 1px solid rgba(85, 85, 85, 0.1);
+        }
+
+        .roadmap-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .roadmap-content h2 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 80px;
+            color: var(--text-secondary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .roadmap-stage {
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(85, 85, 85, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-stage:hover {
+            transform: translateY(-5px);
+            border-color: rgba(85, 85, 85, 0.4);
+        }
+
+        .stage-header {
+            margin-bottom: 25px;
+        }
+
+        .stage-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .stage-badge.now {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .stage-badge.next {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+
+        .stage-badge.later {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .stage-header h3 {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            color: var(--text-muted);
+            padding: 8px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-weight: 600;
         }
 
         /* Enhanced Screenshots Section */
@@ -1096,6 +1312,13 @@
         .email-address:hover {
             color: var(--text-primary);
         }
+
+        .privacy-notice {
+            font-size: 0.9rem;
+            color: var(--accent-secondary) !important;
+            font-style: italic;
+            margin-bottom: 20px !important;
+        }
         
         /* Mobile Optimizations */
         @media (max-width: 768px) {
@@ -1258,6 +1481,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#vision" class="nav-link">Vision & Roadmap</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#beta" class="nav-link">Beta</a></li>
                 <li><a href="#support" class="nav-link">Support</a></li>
@@ -1278,24 +1502,30 @@
                 <div class="app-icon-container">
                     <img src="icons/ios/AppIcon.appiconset/ItunesArtwork@2x.png" alt="GSDlog App Icon" class="app-icon">
                 </div>
-                <h1>GSDlog</h1>
+                <h1>GSDlog — Your German Shepherd's digital companion</h1>
                 <p class="tagline">
-                    The Ultimate German Shepherd Companion App
-                </p>
-                <p class="description">
-                    A modern app tailored specifically for German Shepherd Dog owners. 
-                    Track walks, monitor health, manage training, and discover amazing insights about your loyal companion.
+                    Get science-based paw-safety insights, seamlessly import your walk history via GPX, and share privacy-safe updates. All on-device. No account. No tracking.
                 </p>
                 <div class="cta-buttons">
                     <a href="#beta" class="btn btn-primary">
-                        <span>Coming Soon</span>
+                        <span>Join the TestFlight waitlist</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                             <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
                         </svg>
                     </a>
-                    <a href="#features" class="btn btn-secondary">
-                        <span>Learn More</span>
+                    <a href="#" class="btn btn-secondary mastodon-link">
+                        <span>Follow the devlog on Mastodon</span>
                     </a>
+                </div>
+                <div class="feature-strip">
+                    <div class="feature-strip-content">
+                        <span>Paw-Safety Intelligence</span> • 
+                        <span>Per-km Stats & Audio</span> • 
+                        <span>Places</span> • 
+                        <span>GPX Import</span> • 
+                        <span>Live Activity</span> • 
+                        <span>Privacy-First</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1307,24 +1537,119 @@
                 <div class="features-grid">
                     <div class="feature-card fade-in">
                         <div class="feature-icon">
-                            🐾
+                            🛡️
                         </div>
-                        <h3>Breed-Specific Tracking</h3>
-                        <p>Specialized features designed for German Shepherd characteristics, needs, and behaviors with advanced analytics.</p>
+                        <h3>Paw Safety Intelligence</h3>
+                        <p>Weather-aware surface risk model with conservative thresholds. Get science-based alerts when conditions could harm your GSD's paws.</p>
                     </div>
                     <div class="feature-card fade-in">
                         <div class="feature-icon">
-                            📊
+                            📂
                         </div>
+                        <h3>Seamless GPX Import</h3>
+                        <p>Switch without losing history. Import your walk data from other apps via GPX files, so your GSD's journey stays complete.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            🔒
+                        </div>
+                        <h3>Privacy-Safe Sharing</h3>
+                        <p>Share beautiful walk cards without doxxing yourself. EXIF-free images, trimmed routes, and weather-aware templates that keep your location private.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="vision fade-in">
+            <div class="vision-content">
+                <h2>Built for what's next</h2>
+                <div class="vision-grid">
+                    <div class="vision-card fade-in">
+                        <div class="vision-icon">📈</div>
                         <h3>Advanced Insights</h3>
-                        <p>Get detailed analytics and insights about your GSD's patterns, health trends, and development milestones.</p>
+                        <h4>Coming Soon</h4>
+                        <p>Long-term trends per place and surface, pace vs. weather analysis, and "best time of day" suggestions based on your GSD's patterns.</p>
                     </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            🎓
+                    <div class="vision-card fade-in">
+                        <div class="vision-icon">🧠</div>
+                        <h3>On-Device Intelligence</h3>
+                        <h4>Privacy-First AI</h4>
+                        <p>Route quality scoring, anomaly detection for unusual heat/pace patterns, and smarter sharecard captions—all computed on your phone.</p>
+                    </div>
+                    <div class="vision-card fade-in">
+                        <div class="vision-icon">🎯</div>
+                        <h3>Training & Goals</h3>
+                        <h4>Structured Programs</h4>
+                        <p>Week plans, distance goals, and reminders tied to your favorite Places, designed specifically for German Shepherd development.</p>
+                    </div>
+                    <div class="vision-card fade-in">
+                        <div class="vision-icon">📦</div>
+                        <h3>Bulk History Import</h3>
+                        <h4>Seamless Migration</h4>
+                        <p>Multi-GPX ingest with smart de-duplication, so you can bring years of walk data from any app.</p>
+                    </div>
+                    <div class="vision-card fade-in">
+                        <div class="vision-icon">⌚</div>
+                        <h3>Apple Watch + Widgets</h3>
+                        <h4>Glanceable Insights</h4>
+                        <p>Quick markers and live cues from your wrist, plus home screen widgets for instant walk status.</p>
+                    </div>
+                </div>
+                <div class="privacy-promise">
+                    <p><strong>Privacy Promise:</strong> We'll always prefer on-device models and private computation. If a feature ever needs the cloud, you'll opt in explicitly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="roadmap fade-in">
+            <div class="roadmap-content">
+                <h2>Development Roadmap</h2>
+                <div class="roadmap-grid">
+                    <div class="roadmap-stage">
+                        <div class="stage-header">
+                            <div class="stage-badge now">Now</div>
+                            <h3>v1 Beta</h3>
                         </div>
-                        <h3>Training Management</h3>
-                        <p>Track training sessions, progress, and achievements with GSD-focused methodologies and expert guidance.</p>
+                        <ul class="feature-list">
+                            <li>Start/Stop walk tracking</li>
+                            <li>Live map with GPS precision</li>
+                            <li>Autosave & Resume functionality</li>
+                            <li>Walk history & stats</li>
+                            <li>Per-km markers & audio cues</li>
+                            <li>Science-based paw-safety checks</li>
+                            <li>Privacy-safe sharecards</li>
+                            <li>Single-file GPX import</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-stage">
+                        <div class="stage-header">
+                            <div class="stage-badge next">Next</div>
+                            <h3>v1.x Updates</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Advanced insights basics</li>
+                            <li>Places analytics & patterns</li>
+                            <li>Bulk GPX import with deduplication</li>
+                            <li>More sharecard templates</li>
+                            <li>Swedish + English localization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-stage">
+                        <div class="stage-header">
+                            <div class="stage-badge later">Later</div>
+                            <h3>v2 & Beyond</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>On-device ML for route scoring</li>
+                            <li>Structured training plans</li>
+                            <li>Apple Watch companion app</li>
+                            <li>Home screen widgets</li>
+                            <li>Advanced health insights</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1373,7 +1698,7 @@
                 <div class="about-text">
                     <h2>About GSDlog</h2>
                     <p>GSDlog was born from a passion for German Shepherd Dogs and the desire to create the most comprehensive tracking and insights platform for GSD owners worldwide.</p>
-                    <p>Our team of developers, veterinarians, and GSD enthusiasts have worked together to build an app that understands the unique needs and characteristics of this incredible breed.</p>
+                    <p>Created by a passionate team of German Shepherd owners, working closely with experienced GSD enthusiasts and breed experts to build something truly tailored for this incredible breed.</p>
                     <p>From puppyhood to senior years, GSDlog helps you track every moment of your German Shepherd's journey, providing valuable insights that help you make informed decisions about their health, training, and wellbeing.</p>
                 </div>
             </div>
@@ -1386,7 +1711,7 @@
                 <div class="beta-content">
                     <div class="beta-hero">
                         <h3>Be Among the First</h3>
-                        <p>GSDlog is launching first on Apple's TestFlight beta program. This gives us the opportunity to work directly with dedicated GSD owners like you to perfect the app before our official App Store launch.</p>
+                        <p>GSDlog is launching with a closed TestFlight early fall, with a wider public beta later in the season. This gives us the opportunity to work directly with dedicated GSD owners like you to perfect the app before our official App Store launch.</p>
                     </div>
                     
                     <div class="beta-features">
@@ -1495,6 +1820,7 @@
                     <div class="waitlist-signup">
                         <h3>Join the Waitlist</h3>
                         <p>Ready to be notified when GSDlog launches? Email us to join our waitlist and get exclusive updates on beta opportunities and the official release.</p>
+                        <p class="privacy-notice">No spam. We only use your email for beta updates.</p>
                         <div class="contact-info">
                             <p class="email-contact">
                                 Email <span class="email-address" data-user="vasb" data-domain="tfqybt.ncc"></span> to join the waitlist
