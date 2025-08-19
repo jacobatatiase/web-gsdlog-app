@@ -611,6 +611,24 @@
             font-size: 1rem;
         }
 
+        .launch-features {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .launch-summary {
+            background: rgba(26, 26, 26, 0.4);
+            border: 1px solid rgba(85, 85, 85, 0.3);
+            border-radius: 16px;
+            padding: 25px 30px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 500;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         /* Vision Section */
         .vision {
             padding: 120px 0;
@@ -1491,12 +1509,11 @@
         <div class="nav-container">
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#features" class="nav-link">What you get at launch</a></li>
                 <li><a href="#vision" class="nav-link">Vision & Roadmap</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#beta" class="nav-link">Beta</a></li>
                 <li><a href="#support" class="nav-link">Support</a></li>
-                <li><a href="#download" class="nav-link">Download</a></li>
             </ul>
             <div class="nav-toggle" id="nav-toggle">
                 <span></span>
@@ -1544,7 +1561,7 @@
         <!-- Features Section -->
         <section id="features" class="features fade-in">
             <div class="features-content">
-                <h2>Built for GSD Excellence</h2>
+                <h2>What you get at launch</h2>
                 <div class="features-grid">
                     <div class="feature-card fade-in">
                         <div class="feature-icon">
@@ -1567,6 +1584,9 @@
                         <h3>Privacy-Safe Sharing</h3>
                         <p>Share beautiful walk cards without doxxing yourself. EXIF-free images, trimmed routes, and weather-aware templates that keep your location private.</p>
                     </div>
+                </div>
+                <div class="launch-features">
+                    <p class="launch-summary">Live Activity • Per-km markers & audio cues • Paw-Safety checks • Places • Single-file GPX import • Privacy-safe sharecards • On-device storage (no account, no tracking)</p>
                 </div>
             </div>
         </section>
@@ -1657,6 +1677,7 @@
                             <li>On-device ML for route scoring</li>
                             <li>Structured training plans</li>
                             <li>Apple Watch companion app</li>
+                            <li>iPad support</li>
                             <li>Home screen widgets</li>
                             <li>Advanced health insights</li>
                         </ul>
@@ -1788,11 +1809,11 @@
                     </div>
                     <div class="faq-item">
                         <h3>Which platforms will GSDlog be available on?</h3>
-                        <p>GSDlog is built primarily for iOS (iPhone, iPad, and Apple Watch). An Android version may follow based on demand, and we're considering a web version for viewing your data and reports - though the core tracking experience will remain app-focused.</p>
+                        <p>iPhone first. iPad and Apple Watch planned—see Roadmap. An Android version may follow based on demand, and we're considering a web version for viewing your data and reports.</p>
                     </div>
                     <div class="faq-item">
                         <h3>How does the health tracking work?</h3>
-                        <p>Our health tracking is powered by scientific research, official breed standards, and veterinary data specific to German Shepherds. Combined with specially trained AI that understands GSD-specific health patterns, we provide evidence-based insights tailored to your dog's unique needs.</p>
+                        <p>Planned insights and trends based on scientific research, official breed standards, and veterinary data specific to German Shepherds. We prefer on-device models; if anything ever needs the cloud, you'll opt in explicitly.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Can I import existing data?</h3>
@@ -1802,41 +1823,6 @@
                 <div class="support-contact">
                     <h3>Still have questions?</h3>
                     <p>Contact us at <a href="mailto:hello@gsdlog.app" class="email-address">hello@gsdlog.app</a></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Download Section -->
-        <section id="download" class="download fade-in">
-            <div class="features-content">
-                <h2>Get GSDlog</h2>
-                <div class="download-content">
-                    <p>Email us to join the waitlist and be the first to know when GSDlog launches. We'll keep you updated on our progress and beta opportunities.</p>
-                    <div class="download-buttons">
-                        <div class="store-button">
-                            <div class="store-placeholder">
-                                <span>Coming Soon</span>
-                                <strong>App Store</strong>
-                            </div>
-                        </div>
-                        <div class="store-button">
-                            <div class="store-placeholder">
-                                <span>Beta Testing</span>
-                                <strong>TestFlight</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="waitlist-signup">
-                        <h3>Join the Waitlist</h3>
-                        <p>Ready to be notified when GSDlog launches? Email us to join our waitlist and get exclusive updates on beta opportunities and the official release.</p>
-                        <p class="privacy-notice">No spam. We only use your email for beta updates.</p>
-                        <div class="contact-info">
-                            <p class="email-contact">
-                                Email <a href="mailto:hello@gsdlog.app?subject=GSDlog%20Beta%20Waitlist" class="email-address">hello@gsdlog.app</a> to join the waitlist
-                            </p>
-                            <a href="mailto:hello@gsdlog.app?subject=GSDlog%20Beta%20Waitlist" class="btn btn-primary">Join Waitlist</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
