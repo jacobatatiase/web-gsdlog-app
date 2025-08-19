@@ -6,6 +6,20 @@
     <title>GSDlog - Your German Shepherd's digital companion</title>
     <meta name="description" content="GSDlog is an indie project led by a single developer and GSD owner, with input from experienced handlers, working-dog trainers, and a consulting veterinarian. Privacy-first walk tracking for German Shepherds.">
     
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gsdlog.app/">
+    <meta property="og:title" content="GSDlog - Your German Shepherd's digital companion">
+    <meta property="og:description" content="Privacy-first walk tracking for German Shepherds. Paw-safety intelligence, GPX import, and privacy-safe sharing. All on-device. No account. No tracking.">
+    <meta property="og:image" content="https://gsdlog.app/icons/ios/AppIcon.appiconset/ItunesArtwork@2x.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gsdlog.app/">
+    <meta property="twitter:title" content="GSDlog - Your German Shepherd's digital companion">
+    <meta property="twitter:description" content="Privacy-first walk tracking for German Shepherds. Paw-safety intelligence, GPX import, and privacy-safe sharing. All on-device. No account. No tracking.">
+    <meta property="twitter:image" content="https://gsdlog.app/icons/ios/AppIcon.appiconset/ItunesArtwork@2x.png">
+    
     
     <style>
         :root {
@@ -1251,6 +1265,54 @@
         .support-contact a:hover {
             color: var(--text-primary);
         }
+
+        .privacy-logging {
+            margin: 60px 0;
+            background: rgba(26, 26, 26, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(85, 85, 85, 0.2);
+        }
+
+        .privacy-logging h3 {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .privacy-column h4 {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .privacy-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .privacy-column li {
+            color: var(--text-muted);
+            padding: 5px 0;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .privacy-column li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+        }
         
         /* Download Section */
         .download {
@@ -1792,7 +1854,7 @@
                     <div class="beta-cta">
                         <h3>Ready to Join?</h3>
                         <p>Beta spots are limited. Sign up now to secure your place in the GSDlog TestFlight beta.</p>
-                        <a href="#download" class="btn btn-primary">Join Beta Waitlist</a>
+                        <a href="mailto:hello@gsdlog.app?subject=GSDlog%20TestFlight%20Beta%20Waitlist" class="btn btn-primary">Join the TestFlight waitlist</a>
                     </div>
                 </div>
             </div>
@@ -1820,6 +1882,31 @@
                         <p>We're working on import tools for common formats and other pet apps to make transitioning to GSDlog seamless.</p>
                     </div>
                 </div>
+                
+                <div class="privacy-logging">
+                    <h3>What we log / What we don't</h3>
+                    <div class="privacy-grid">
+                        <div class="privacy-column">
+                            <h4>✅ What stays on your device</h4>
+                            <ul>
+                                <li>All walk data and GPS tracks</li>
+                                <li>Photos and sharecards</li>
+                                <li>Places and personal notes</li>
+                                <li>Paw-safety preferences</li>
+                                <li>All personal information</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-column">
+                            <h4>📤 What we might collect (opt-in only)</h4>
+                            <ul>
+                                <li>Crash reports (anonymous)</li>
+                                <li>Support bundle if you request help</li>
+                                <li>Beta feedback (if you choose to share)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="support-contact">
                     <h3>Still have questions?</h3>
                     <p>Contact us at <a href="mailto:hello@gsdlog.app" class="email-address">hello@gsdlog.app</a></p>
@@ -1831,7 +1918,7 @@
         <footer class="footer">
             <p><strong>GSDlog</strong> - Dedicated to German Shepherd Dog owners everywhere</p>
             <p>More details coming soon. Stay tuned for updates!</p>
-            <p><a href="https://mastodon.social/@gsdlog" class="mastodon-link footer-link" target="_blank" rel="noopener noreferrer">Follow our main developer on Mastodon</a></p>
+            <p><a href="https://mastodon.social/@gsdlog" class="mastodon-link footer-link" target="_blank" rel="noopener noreferrer me">Follow updates on Mastodon</a></p>
             <p>&copy; 2025 GSDlog. All rights reserved. <span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">"We" includes volunteer advisors and founding testers.</span></p>
         </footer>
     </div>
