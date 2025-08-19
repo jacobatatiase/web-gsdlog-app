@@ -1367,10 +1367,37 @@
         }
 
         .form-status.success {
-            background: rgba(34, 197, 94, 0.1);
+            background: rgba(34, 197, 94, 0.15);
             color: #22c55e;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            border: 1px solid rgba(34, 197, 94, 0.4);
             display: block;
+            font-weight: 600;
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
+        }
+
+        .form-status.success.waitlist-success {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.15));
+            padding: 20px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.5);
+            animation: successPulse 2s ease-in-out;
+        }
+
+        @keyframes successPulse {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
+            }
         }
 
         .form-status.error {
@@ -2287,9 +2314,27 @@
                     });
                     
                     if (response.ok) {
-                        status.innerHTML = "Thanks for your submission!";
-                        status.className = 'form-status success';
+                        // Different success messages for different forms
+                        if (formId === 'waitlist-form') {
+                            status.innerHTML = "🎉 You're on the waitlist! We'll email you when TestFlight beta is ready.";
+                            status.className = 'form-status success waitlist-success';
+                            // Temporarily celebrate on the button
+                            button.textContent = '🎉 Added to waitlist!';
+                            button.disabled = false;
+                            setTimeout(() => {
+                                button.textContent = originalText;
+                            }, 3000);
+                        } else {
+                            status.innerHTML = "✅ Message sent! We'll get back to you soon.";
+                            status.className = 'form-status success';
+                            button.textContent = '✅ Sent!';
+                            button.disabled = false;
+                            setTimeout(() => {
+                                button.textContent = originalText;
+                            }, 2000);
+                        }
                         form.reset();
+                        return; // Don't reset button again below
                     } else {
                         const responseData = await response.json();
                         if (responseData.errors) {
@@ -2304,7 +2349,7 @@
                     status.className = 'form-status error';
                 }
                 
-                // Reset button state
+                // Reset button state (only for errors)
                 button.textContent = originalText;
                 button.disabled = false;
             }
