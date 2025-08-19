@@ -1313,6 +1313,72 @@
             left: 0;
             color: var(--accent-secondary);
         }
+
+        /* Form Styling */
+        .contact-form, .waitlist-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(85, 85, 85, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-secondary);
+            background: rgba(26, 26, 26, 0.9);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            display: block;
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            display: block;
+        }
         
         /* Download Section */
         .download {
@@ -1854,7 +1920,20 @@
                     <div class="beta-cta">
                         <h3>Ready to Join?</h3>
                         <p>Beta spots are limited. Sign up now to secure your place in the GSDlog TestFlight beta.</p>
-                        <a href="mailto:hello@gsdlog.app?subject=GSDlog%20TestFlight%20Beta%20Waitlist" class="btn btn-primary">Join the TestFlight waitlist</a>
+                        <form id="waitlist-form" action="https://formspree.io/f/xyzpqgvy" method="POST" class="waitlist-form">
+                            <div class="form-group">
+                                <label for="waitlist-email">Your email:</label>
+                                <input type="email" name="email" id="waitlist-email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="device-info">iPhone model & iOS version (optional):</label>
+                                <input type="text" name="device_info" id="device-info" placeholder="e.g., iPhone 15 Pro, iOS 18.1" />
+                            </div>
+                            <input type="hidden" name="_subject" value="GSDlog TestFlight Beta Waitlist">
+                            <input type="hidden" name="message" value="Please add me to the TestFlight beta waitlist">
+                            <button type="submit" id="waitlist-form-button" class="btn btn-primary">Join the TestFlight waitlist</button>
+                            <p id="waitlist-form-status" class="form-status"></p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1909,7 +1988,19 @@
                 
                 <div class="support-contact">
                     <h3>Still have questions?</h3>
-                    <p>Contact us at <a href="mailto:hello@gsdlog.app" class="email-address">hello@gsdlog.app</a></p>
+                    <form id="contact-form" action="https://formspree.io/f/xyzpqgvy" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="contact-email">Your email:</label>
+                            <input type="email" name="email" id="contact-email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Your message:</label>
+                            <textarea name="message" id="contact-message" rows="4" required></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="GSDlog Contact Form">
+                        <button type="submit" id="contact-form-button" class="btn btn-primary">Send Message</button>
+                        <p id="contact-form-status" class="form-status"></p>
+                    </form>
                 </div>
             </div>
         </section>
@@ -2162,6 +2253,69 @@
             } else {
                 document.body.style.animationPlayState = 'running';
             }
+        });
+
+        // Form handling
+        function setupForm(formId, statusId, buttonId) {
+            const form = document.getElementById(formId);
+            const status = document.getElementById(statusId);
+            const button = document.getElementById(buttonId);
+            
+            if (!form) return;
+            
+            async function handleSubmit(event) {
+                event.preventDefault();
+                
+                // Update button state
+                const originalText = button.textContent;
+                button.textContent = 'Sending...';
+                button.disabled = true;
+                
+                // Clear previous status
+                status.className = 'form-status';
+                status.style.display = 'none';
+                
+                const data = new FormData(event.target);
+                
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        status.innerHTML = "Thanks for your submission!";
+                        status.className = 'form-status success';
+                        form.reset();
+                    } else {
+                        const responseData = await response.json();
+                        if (responseData.errors) {
+                            status.innerHTML = responseData.errors.map(error => error.message).join(", ");
+                        } else {
+                            status.innerHTML = "Oops! There was a problem submitting your form";
+                        }
+                        status.className = 'form-status error';
+                    }
+                } catch (error) {
+                    status.innerHTML = "Oops! There was a problem submitting your form";
+                    status.className = 'form-status error';
+                }
+                
+                // Reset button state
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+            
+            form.addEventListener("submit", handleSubmit);
+        }
+        
+        // Initialize forms when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            setupForm('contact-form', 'contact-form-status', 'contact-form-button');
+            setupForm('waitlist-form', 'waitlist-form-status', 'waitlist-form-button');
         });
     </script>
 </body>
