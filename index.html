@@ -965,6 +965,50 @@
             text-decoration: underline;
         }
 
+        /* Thanks Section */
+        .thanks-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thanks-content {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--tertiary-bg));
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .thanks-message h2 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .thanks-message p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .thanks-note {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
         /* Scroll Animations */
         @keyframes fadeInUp {
             from {
@@ -1324,6 +1368,18 @@
             margin-bottom: 20px;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .form-group label {
             display: block;
             color: var(--text-secondary);
@@ -1405,6 +1461,60 @@
             color: #ef4444;
             border: 1px solid rgba(239, 68, 68, 0.3);
             display: block;
+        }
+
+        /* Checkbox Styling */
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(85, 85, 85, 0.4);
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkmark {
+            background: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary-bg);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .privacy-micro {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin: 10px 0 0 0;
+            font-style: italic;
         }
         
         /* Download Section */
@@ -1841,43 +1951,6 @@
             </div>
         </section>
 
-        <!-- Screenshots Section -->
-        <section class="screenshots fade-in">
-            <h2>App Preview</h2>
-            <div class="screenshot-gallery">
-                <div class="phone-mockup fade-in">
-                    <div class="phone-frame">
-                        <div class="notch"></div>
-                        <div class="phone-screen">
-                            <div>
-                                Screenshots<br>Coming Soon
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="phone-mockup fade-in">
-                    <div class="phone-frame">
-                        <div class="notch"></div>
-                        <div class="phone-screen">
-                            <div>
-                                More Features<br>Coming Soon
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="phone-mockup fade-in">
-                    <div class="phone-frame">
-                        <div class="notch"></div>
-                        <div class="phone-screen">
-                            <div>
-                                Full Experience<br>Coming Soon
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- About Section -->
         <section id="about" class="about fade-in">
             <div class="about-content">
@@ -1952,13 +2025,31 @@
                                 <label for="waitlist-email">Your email:</label>
                                 <input type="email" name="email" id="waitlist-email" required />
                             </div>
-                            <div class="form-group">
-                                <label for="device-info">iPhone model & iOS version (optional):</label>
-                                <input type="text" name="device_info" id="device-info" placeholder="e.g., iPhone 15 Pro, iOS 18.1" />
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="iphone-model">iPhone model (optional):</label>
+                                    <input type="text" name="iphone_model" id="iphone-model" placeholder="e.g., iPhone 15 Pro" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="ios-version">iOS version (optional):</label>
+                                    <input type="text" name="ios_version" id="ios-version" placeholder="e.g., iOS 18.1" />
+                                </div>
                             </div>
-                            <input type="hidden" name="_subject" value="GSDlog TestFlight Beta Waitlist">
-                            <input type="hidden" name="message" value="Please add me to the TestFlight beta waitlist">
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="consent" id="consent-checkbox" required />
+                                    <span class="checkmark"></span>
+                                    Email me beta updates (no tracking)
+                                </label>
+                            </div>
+                            <!-- Hidden fields for Formspree -->
+                            <input type="hidden" name="_subject" value="GSDlog Beta Waitlist">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://gsdlog.app/#thanks">
+                            <!-- Honeypot field for spam protection -->
+                            <input type="text" name="_gotcha" style="display:none !important;" />
                             <button type="submit" id="waitlist-form-button" class="btn btn-primary">Join the TestFlight waitlist</button>
+                            <p class="privacy-micro">We only use your email for beta updates.</p>
                             <p id="waitlist-form-status" class="form-status"></p>
                         </form>
                     </div>
@@ -1986,6 +2077,10 @@
                     <div class="faq-item">
                         <h3>Can I import existing data?</h3>
                         <p>We're working on import tools for common formats and other pet apps to make transitioning to GSDlog seamless.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Medical Disclaimer</h3>
+                        <p><strong>Not a medical device.</strong> GSDlog provides insights and tracking for informational purposes only. Always consult your veterinarian for medical advice and health concerns.</p>
                     </div>
                 </div>
                 
@@ -2039,6 +2134,18 @@
             <p><a href="https://mastodon.social/@gsdlog" class="mastodon-link footer-link" target="_blank" rel="noopener noreferrer me">Follow updates on Mastodon</a></p>
             <p>&copy; 2025 GSDlog. All rights reserved. <span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">"We" includes volunteer advisors and founding testers.</span></p>
         </footer>
+        
+        <!-- Thanks Section (hidden by default, shown via #thanks) -->
+        <section id="thanks" class="thanks-section" style="display: none;">
+            <div class="thanks-content">
+                <div class="thanks-message">
+                    <h2>🎉 You're on the waitlist!</h2>
+                    <p>Thanks for signing up for the GSDlog TestFlight beta. We'll email you when it's ready.</p>
+                    <p class="thanks-note">Keep an eye out for beta invites starting early fall 2025.</p>
+                    <a href="#home" class="btn btn-primary" onclick="document.getElementById('thanks').style.display='none'">Continue browsing</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -2357,11 +2464,22 @@
             form.addEventListener("submit", handleSubmit);
         }
         
+        // Handle #thanks URL hash
+        function checkThanksHash() {
+            if (window.location.hash === '#thanks') {
+                document.getElementById('thanks').style.display = 'flex';
+            }
+        }
+
         // Initialize forms when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             setupForm('contact-form', 'contact-form-status', 'contact-form-button');
             setupForm('waitlist-form', 'waitlist-form-status', 'waitlist-form-button');
+            checkThanksHash();
         });
+
+        // Check for #thanks when hash changes
+        window.addEventListener('hashchange', checkThanksHash);
     </script>
 </body>
 </html>
