@@ -50,7 +50,7 @@
             --h1: clamp(28px, 4vw, 38px);
             --h2: clamp(22px, 3vw, 28px);
             --h3: clamp(18px, 2.2vw, 22px);
-            --body: 17px;
+            --body: 18px;
             --tight: 1.2; 
             --normal: 1.5; 
             --loose: 1.7;
@@ -412,10 +412,11 @@
 
         /* Hero specific */
         .hero .sub {
-            font-size: 18px;
+            font-size: 19px;
             line-height: var(--normal);
             opacity: .9;
             margin-bottom: var(--s4);
+            font-weight: 500;
         }
 
 
@@ -609,109 +610,6 @@
             color: var(--text-secondary);
         }
 
-        /* Roadmap Section */
-        .roadmap {
-            padding: 120px 0;
-            position: relative;
-            margin: 80px 0;
-            background: rgba(26, 26, 26, 0.1);
-            border-radius: 32px;
-            border: 1px solid rgba(85, 85, 85, 0.1);
-        }
-
-        .roadmap-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .roadmap-content h2 {
-            text-align: center;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 80px;
-            color: var(--text-secondary);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .roadmap-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        .roadmap-stage {
-            background: rgba(26, 26, 26, 0.6);
-            border: 1px solid rgba(85, 85, 85, 0.2);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .roadmap-stage:hover {
-            transform: translateY(-5px);
-            border-color: rgba(85, 85, 85, 0.4);
-        }
-
-        .stage-header {
-            margin-bottom: 25px;
-        }
-
-        .stage-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .stage-badge.now {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-        }
-
-        .stage-badge.next {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-        }
-
-        .stage-badge.later {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-        }
-
-        .stage-header h3 {
-            color: var(--text-secondary);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .feature-list li {
-            color: var(--text-muted);
-            padding: 8px 0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .feature-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-secondary);
-            font-weight: 600;
-        }
 
         /* Enhanced Screenshots Section */
         .screenshots {
@@ -1264,8 +1162,8 @@
                 <li><a href="#today" class="nav-link active">What exists</a></li>
                 <li><a href="#gsd" class="nav-link">GSD-specific</a></li>
                 <li><a href="#next" class="nav-link">Coming next</a></li>
-                <li><a href="#involved" class="nav-link">Get involved</a></li>
-                <li><a href="#changelog" class="nav-link">Changelog</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
                 <li><a href="#privacy" class="nav-link">Privacy</a></li>
             </ul>
             <div class="nav-toggle" id="nav-toggle">
@@ -1351,57 +1249,41 @@
         
         <hr>
 
-        <!-- Roadmap Section -->
-        <section id="roadmap" class="roadmap fade-in">
-            <div class="roadmap-content">
-                <h2>Development Roadmap</h2>
-                <div class="roadmap-grid">
-                    <div class="roadmap-stage">
-                        <div class="stage-header">
-                            <div class="stage-badge now">Now</div>
-                            <h3>v1 Beta</h3>
-                        </div>
-                        <ul class="feature-list">
-                            <li>Start/Stop walk tracking</li>
-                            <li>Live map with GPS precision</li>
-                            <li>Autosave & Resume functionality</li>
-                            <li>Walk history & stats</li>
-                            <li>Per-km markers & audio cues</li>
-                            <li>Science-based paw-safety checks</li>
-                            <li>Privacy-safe sharecards</li>
-                            <li>Single-file GPX import</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="roadmap-stage">
-                        <div class="stage-header">
-                            <div class="stage-badge next">Next</div>
-                            <h3>v1.x Updates</h3>
-                        </div>
-                        <ul class="feature-list">
-                            <li>Advanced insights basics</li>
-                            <li>Places analytics & patterns</li>
-                            <li>Bulk GPX import with deduplication</li>
-                            <li>More sharecard templates</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="roadmap-stage">
-                        <div class="stage-header">
-                            <div class="stage-badge later">Later</div>
-                            <h3>v2 & Beyond</h3>
-                        </div>
-                        <ul class="feature-list">
-                            <li>On-device ML for route scoring</li>
-                            <li>Structured training plans</li>
-                            <li>Apple Watch companion app</li>
-                            <li>iPad support</li>
-                            <li>Home screen widgets</li>
-                            <li>Advanced health insights</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <!-- Development Roadmap Section -->
+        <section id="roadmap">
+            <h2>Development Roadmap</h2>
+            
+            <h3>Now (what's in the app today)</h3>
+            <ul>
+                <li><strong>Rock-solid basics</strong> — distance, time, pace, per-km splits.</li>
+                <li><strong>Today page</strong> — your dog's "daily mission control" (today's walks, distance progress, quick start).</li>
+                <li><strong>Lock Screen progress</strong> — live timer + today's totals on the Lock Screen while walking.</li>
+                <li><strong>Shareable walk summaries</strong> — clean image cards for family/trainer.</li>
+                <li><strong>Single-file import</strong> — bring past walks from apps/watches that export <strong>GPX</strong>.</li>
+                <li><strong>Support Bundle</strong> — one-tap, privacy-safe debug ZIP for testers.</li>
+                <li><strong>Navigation stability</strong> — crash-proof navigation and swipe-to-delete in history.</li>
+                <li><strong>Simple statistics</strong> — week totals and daily breakdowns at a glance.</li>
+            </ul>
+            
+            <h3>Next up (what we're building with testers)</h3>
+            <ul>
+                <li><strong>Siri & Shortcuts (App Intents)</strong> — quick "Start a walk" and "Check paw safety".</li>
+                <li><strong>Insight engine v1</strong> — pace drift, rainy-day effect, consistency, and personal records.</li>
+                <li><strong>Age-based advisory bands (opt-in)</strong> — daily distance/time coaching aligned to a GSD's age.</li>
+                <li><strong>Live distance progress bar</strong> — shows today vs your advisory band with gentle haptics.</li>
+                <li><strong>Places v1 (manual tags)</strong> — tag routes/areas to see place-specific patterns later.</li>
+            </ul>
+            
+            <h3>Later (bigger bets, community-shaped)</h3>
+            <ul>
+                <li><strong>Apple Watch companion</strong> and <strong>Android</strong> exploration.</li>
+                <li><strong>Training sessions & achievements</strong> (full system).</li>
+                <li><strong>Bulk import/ZIP</strong> and <strong>HealthKit</strong> options.</li>
+                <li><strong>Growth check-ins</strong> (weekly photos, manual weight/BCS; AI optional later).</li>
+                <li><strong>Stool check-ins</strong> (manual consistency/color; trends only, not medical advice).</li>
+            </ul>
+            
+            <p class="muted">We keep this roadmap honest and refresh it as we ship. No dates; just clear priorities.</p>
         </section>
 
         <!-- How to get involved Section -->
@@ -1422,6 +1304,43 @@
                 <li><strong>2025-08-01</strong> — Walk engine reliability pass; distance/split accuracy tightened.</li>
             </ul>
             <p class="muted">(Keep 3–6 items; update weekly.)</p>
+        </section>
+        
+        <hr>
+        
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2>FAQ</h2>
+            
+            <h3>On which platforms will GSDlog be available?</h3>
+            <p>Right now: <strong>iPhone (iOS)</strong>. We'll explore <strong>Apple Watch</strong> and <strong>Android</strong> later.</p>
+            
+            <h3>I want to be a tester — how do I join?</h3>
+            <p>Great! We'll open one forum thread (pending moderator approval). <strong>DM us there</strong> and we'll share a private invite with a week-one checklist.</p>
+            
+            <h3>I have ideas for the app!</h3>
+            <p>Perfect — we want them. <strong>Email or DM</strong> us and we'll add them to the backlog. (We reply to every thoughtful note.)</p>
+            
+            <h3>What does "Lock Screen progress" mean?</h3>
+            <p>When you're walking, your iPhone shows a small status on the Lock Screen: a <strong>live timer</strong> and <strong>today's totals</strong> so you don't need to unlock the phone.</p>
+            
+            <h3>What is a "shareable walk summary"?</h3>
+            <p>After a walk, GSDlog can make a tidy <strong>image card</strong> with distance, time, and optional route preview — easy to send to family or your trainer.</p>
+            
+            <h3>What is GPX? Do I need it?</h3>
+            <p><strong>No.</strong> GPX is a common GPS file format used by watches/apps. If you have old walks from elsewhere, you can import a <strong>single GPX file</strong>. Otherwise you can ignore this.</p>
+            
+            <h3>How is my data handled?</h3>
+            <p>We're <strong>privacy-first</strong>. Your data stays on your phone. Features that might need the cloud are <strong>opt-in</strong> and clearly labeled. The website doesn't use tracking cookies.</p>
+            
+            <h3>Will the app nag me?</h3>
+            <p>No. Insights are <strong>gentle nudges</strong> and you can turn them off anytime.</p>
+            
+            <h3>Do you track my location when I'm not walking?</h3>
+            <p><strong>No.</strong> GSDlog only records GPS during a walk. (Optional features like home geofence for "Alone Time" will be <strong>opt-in</strong>.)</p>
+            
+            <h3>Is this medical advice?</h3>
+            <p>No. We're a logging and coaching tool. For health concerns, please talk to your vet.</p>
         </section>
         
         <hr>
