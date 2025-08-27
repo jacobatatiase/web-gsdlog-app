@@ -120,15 +120,18 @@
             left: 50%;
             transform: translateX(-50%) translateY(-120px);
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(85, 85, 85, 0.2);
+            background: linear-gradient(145deg, 
+                rgba(0, 0, 0, 0.85) 0%, 
+                rgba(20, 23, 26, 0.8) 100%);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50px;
             padding: 0;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.3),
-                0 5px 15px rgba(0, 0, 0, 0.2);
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                0 8px 20px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
         
         .navbar.visible {
@@ -292,24 +295,125 @@
             z-index: 1;
         }
 
-        /* Status pill */
-        .status-pill {
-            display: inline-block;
+        /* Beautiful iOS-style Buttons */
+        .btn {
+            position: relative;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transform: translateY(0);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: var(--text);
+            box-shadow: 
+                0 10px 30px rgba(51, 51, 51, 0.3),
+                0 5px 15px rgba(85, 85, 85, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 15px 40px rgba(51, 51, 51, 0.4),
+                0 8px 20px rgba(85, 85, 85, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(26, 26, 26, 0.4);
+            color: var(--text);
+            border: 2px solid rgba(204, 204, 204, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(204, 204, 204, 0.6);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 12px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Status badge specific styling */
+        .status-badge {
             font-size: 12px;
-            padding: 4px 8px;
-            border-radius: 999px;
-            border: 1px solid var(--line);
+            padding: 8px 16px;
             margin-left: var(--s2);
+            cursor: default;
+            font-weight: 500;
+        }
+
+        .status-badge:hover {
+            transform: translateY(-2px) scale(1.01);
         }
         
-        /* Optional card */
+        /* Enhanced iOS-style Cards */
         .card {
-            background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00));
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: var(--s4);
-            box-shadow: var(--shadow);
+            background: linear-gradient(145deg, 
+                rgba(255,255,255,.08) 0%, 
+                rgba(255,255,255,.02) 50%,
+                rgba(0,0,0,.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: var(--s5);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.25),
+                0 8px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
             margin-bottom: var(--s4);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transform: translateZ(0);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(141, 198, 255, 0.05) 0%, 
+                transparent 50%, 
+                rgba(165, 226, 198, 0.05) 100%);
+            border-radius: 24px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
         
         .card h3 {
@@ -348,9 +452,41 @@
             width: 100px;
             height: 100px;
             border-radius: 22px;
-            box-shadow: var(--shadow);
             display: block;
             margin: 0 auto;
+            transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                0 10px 25px rgba(0, 0, 0, 0.2),
+                0 0 60px rgba(141, 198, 255, 0.3),
+                0 0 20px rgba(165, 226, 198, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            transform: translateZ(0);
+        }
+
+        .app-icon-container:hover .app-icon {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.4),
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 80px rgba(141, 198, 255, 0.4),
+                0 0 30px rgba(165, 226, 198, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Subtle floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(1deg); }
+        }
+
+        .app-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .app-icon-container:hover .app-icon {
+            animation: none;
         }
 
 
@@ -781,13 +917,18 @@
 
         /* Thanks section removed - no longer needed */
 
-        /* Smooth transitions for cards */
-        .card {
-            transition: transform 0.2s ease;
-        }
-        
+        /* Enhanced card hover effects */
         .card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.3),
+                0 12px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
 
         /* About Section */
@@ -1183,7 +1324,7 @@
                 </div>
                 <h1>GSDlog — a privacy-first walk log for German Shepherds.</h1>
                 <p class="sub">
-                    Built by a GSD owner, in active development with a small tester group. <span class="status-pill">In active development</span>
+                    Built by a GSD owner, in active development with a small tester group. <span class="btn btn-secondary status-badge">In active development</span>
                 </p>
             </div>
         </section>
